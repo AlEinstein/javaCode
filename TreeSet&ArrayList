@@ -21,7 +21,6 @@ java集合框架的练习之TreeSet集合与ArrayList集合的混合使用
 
 代码:
 
-    <pre name="code" class="java">import java.util.ArrayList;  
     import java.util.Comparator;  
     import java.util.List;  
     import java.util.Scanner;  
