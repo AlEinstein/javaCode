@@ -12,7 +12,6 @@ TreeSet集合属于Set集合的子类, 具有:无序(存,取顺序不一致),无
  5.遍历TreeSet集合,打印每一个字符
 
 代码如下:
-[java] view plain copy
 
     import java.util.Comparator;  
     import java.util.Scanner;  
