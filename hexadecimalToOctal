@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class Main {
+/**
+ * 问题描述
+　　给定n个十六进制正整数，输出它们对应的八进制数。
+
+ 输入格式
+　　输入的第一行为一个正整数n （1<=n<=10）。
+　　接下来n行，每行一个由0~9、大写字母A~F组成的字符串，表示要转换的十六进制正整数，每个十六进制数长度不超过100000。
+
+ 输出格式
+　　输出n行，每行为输入对应的八进制正整数。
+ * @param args
+ */
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		int n = input.nextInt();       
+		String[] in = new String[n];   
+		String[] out = new String[n];
+		for (int i = 0; i < n; i++) {
+			in[i] = input.next();
+			int len = in[i].length();
+			int j = len%3;
+			String strIn = "";
+			String strOut = "";
+			if (j == 1) {
+				strIn = in[i].charAt(0) + "";
+				strOut = trans(strIn);
+			} else if (j == 2) {
+				strIn = in[i].charAt(0) + "" + in[i].charAt(1) + "";
+				strOut = trans(strIn);
+			} else {
+				strOut = "";
+			}
+			
+			while (j < in[i].length()) {
+				strIn = in[i].charAt(j) + "" + in[i].charAt(j + 1) + "" + in[i].charAt(j + 2) + "";
+				strOut += trans(strIn);
+				j += 3;
+			}
+			
+			out[i] = strOut;
+		}
+		for (String string : out) {
+			System.out.println(string);
+		}
+		input.close();
+	}
+		
+	private static String trans(String strIn) {
+		//return Integer.toString(Integer.parseInt(strIn,16),8);
+		//十六进制转二进制  
+		String bs = Integer.toBinaryString(Integer.valueOf(strIn, 16));  
+	    //二进制转八进制  
+	    String os = Integer.toOctalString((Integer.valueOf(bs, 2)));  
+		return os;
+	}  
+}
