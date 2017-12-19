@@ -1,3 +1,6 @@
+// 内容一共包含四种UTF-8编码输出方式, 具体请见鄙人博客:http://blog.csdn.net/striner/article/details/78841540
+
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,31 +16,35 @@ public class Service extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//服务器中默认编码为ISO-8859-1,不支持中文(tomcat规定的)
+		//服务器中默认编码为ISO-8859-1,不支持中文(tomcat规定)
 		
-		/* ------------------------------------------------------------- 
-		//告诉服务器应用使用UTF-8解析文本
+	
+		/*告诉服务器应用使用UTF-8解析文本*/
 		response.setCharacterEncoding("UTF-8");
-	    //告诉客户端使用什么编码
-		// 法一
+		
+	        /*客户端编码设置*/
 		PrintWriter out = response.getWriter();  //得到一个字符输出流
-		out.write("<html><head> <meta charset='UTF-8'></head><body>javaEE初习~</body></html>");  //向客户端相应文本内容
+		// 法一
+		out.write("<html><head> <meta charset='UTF-8'></head><body>测试一</body></html>");  //向客户端相应文本内容
 		// 法二
-		//response.setHeader("content-type", "charset=UTF-8");
-		//out.write("javaEE初习~");  //向客户端相应文本内容
-		 ------------------------------------------------------------- */
+		response.setHeader("content-type", "text/html;charset=UTF-8");
+		out.write("测试二");  //向客户端相应文本内容
+		
+		/* ------------------------------------------------------------- */
 		
 		/*告诉服务器应用使用UTF-8解析文本,告诉客户端要使用什么编码*/
-		response.setContentType("text/html; charset=UTF-8");  //等同于以上内容
-		
+		response.setContentType("text/html; charset=UTF-8");  //等同于以上response.setCharacterEncoding("UTF-8")+...charset=UTF-8
+	
+		/*测试内容输出*/
+		// 法一
 		PrintWriter out = response.getWriter(); //得到一个字符输出流
-		out.write("javaEE初习~");
-		/*----------------*/
+		out.write("测试三");
+		// 法二
 		ServletOutputStream sos = response.getOutputStream();   
-		sos.write("字符串后加getBytes()将String编码为byte序列这种方式也不会乱码.".getBytes());
-		
+	        sos.write("测试四".getBytes());    //字符串后加getBytes()将String编码为byte序列这种方式也不会乱码.
+	
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
