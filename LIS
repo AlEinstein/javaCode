@@ -1,3 +1,5 @@
+package lis;   //最长上升子序列
+
 import java.util.Scanner;
 
 public class Main {
@@ -24,22 +26,14 @@ public class Main {
 		for (int i = 1; i < n; i++) {
 			for (int j = 0; j < i; j++) {
 				if (arr[j] < arr[i]) {
-					dp[i] = max(dp[j] + 1, dp[i]);  //通项公式 若dp[j]的长度加上arr[j]这个数的长度 > dp[i],则dp[i] = dp[j] + 1
+					dp[i] = Math.max(dp[j] + 1, dp[i]);  //通项公式 若dp[j]的长度加上arr[j]这个数的长度 > dp[i],则dp[i] = dp[j] + 1
 				}
 			}
-			ans = max(ans, dp[i]);   //ans为最大子序列长度
+			ans = Math.max(ans, dp[i]);   //ans为最大子序列长度
 		}
 		System.out.println(ans);
 		
 		input.close();
-	}
-
-	public static int max(int i, int j) {
-		if (i > j) {
-			return i;
-		} else {
-			return j;
-		}
 	}
 
 }
