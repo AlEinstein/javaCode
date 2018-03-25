@@ -17,7 +17,7 @@ public class Main {
 		return f(n, 0);
 	}
 
-	static int ans = 0;
+
 	public static int f(int n, int m) {    //n为等待进栈的数目  m为栈内已有的个数
 
 		if (n == 0) return 1;
