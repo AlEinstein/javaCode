@@ -10,7 +10,7 @@ public class Main {
 		input.close();
 	}
 
-	public static void fun(char[] arr, int index) {   //aa:待排数据   index: 考虑的当前位置(数组下标)
+	public static void fun(char[] arr, int index) {   //arr:待排数据   index: 考虑的当前位置(数组下标)
 
 		if (index == arr.length - 1) {
 			System.out.println(String.valueOf(arr));
