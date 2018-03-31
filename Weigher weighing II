@@ -9,7 +9,7 @@ class Main1 {
 		Scanner input = new Scanner(System.in);
 		int w = input.nextInt();
 		
-		for (int i = 0; i < w; i++) {
+		for (int i = 1; i <= w; i++) {
 			System.out.println(i + ": " + fun(i));
 		}
 		
@@ -22,11 +22,11 @@ class Main1 {
 		int q = 1;   //权重
 		while(w > 0) {
 			int s = w/3;   //商
-			if (w%3 == 1) return "+" + q + str;    //若余数为1则加上当前权重
+			if (w%3 == 1) str = "+" + q + str;    //若余数为1则加上当前权重
 			if (w%3 == 2) {    //若余数为2则减去当前权重
 				//w += q;
 				s++;
-				return "-" + q + str;
+				str = "-" + q + str;
 			}
 			w = s;
 			q *= 3;
