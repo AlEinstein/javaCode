@@ -42,7 +42,7 @@ public class Main {
 	}
 	public static int find(int x) {   //查找其父节点
 
-		if(tb[x] == 0) return 0;
+		if(tb[x] == 0) return x;
 		return tb[x] = find(tb[x]);  //并查集
 	}
 }
